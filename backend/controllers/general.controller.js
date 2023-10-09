@@ -69,9 +69,28 @@ const update = async (req, res)=>{
     }
 }
 
+const deleteDoc = async (req, res)=>{
+    try {
+        const db = await conexion();
+
+        const {coleccion, id} = req.params;
+
+        const colection = db.collection(coleccion);
+
+        const objId = new ObjectId(id);
+
+        await colection.findOneAndDelete({_id : objId});
+
+        res.json({ms : "Documento eliminado exitosamente"});
+    } catch (error) {
+        res.status(400).json({ms : error.message});
+    }
+}
+
 export {
     getAll,
     getOne,
     post,
-    update
+    update,
+    deleteDoc
 }
