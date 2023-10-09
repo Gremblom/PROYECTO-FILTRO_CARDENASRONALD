@@ -25,7 +25,7 @@ router.post('/login',[
 router.post('/register',[
 /*     check('Correo','El email es obligatorio').isEmail(),
     check('Password','La contraseña es obligatoria').not().isEmpty(), */
-    check('Username','La username es obligatorio').not().isEmpty(),
+    check('Username','La username es obligatorio').not().isEmpty(), /* SANCHEZ SI NECESITA PROBAR EL REGISTER COMENTE ESTA LINEA Y DESCOMENTE SUS CHECKS*/
     multerUpload.single(('profileFoto'), saveImage),
     validateDocuments
 ],register);
