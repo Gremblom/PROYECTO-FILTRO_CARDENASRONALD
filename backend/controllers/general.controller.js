@@ -35,7 +35,24 @@ const getOne = async (req, res)=>{
     }
 }
 
+const post = async (req, res)=>{
+    try {
+        const db = await conexion();
+
+        const {coleccion} = req.params;
+
+        const colection = db.collection(coleccion);
+
+        await colection.insertOne(req.body);
+
+        res.json({ms : "Documento ingresado exitosamente"});
+    } catch (error) {
+        res.status(400).json({ms : error.message});
+    }
+}
+
 export {
     getAll,
-    getOne
+    getOne,
+    post
 }
