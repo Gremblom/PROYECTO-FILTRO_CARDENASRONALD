@@ -1,7 +1,19 @@
 import {Router} from "express";
-import {login,register }from "../controllers/login.controller.js";
 import { check } from "express-validator";
-import { validateDocuments } from "../middlewares/validateDocuments.js";
+import multer from 'multer';
+import {dirname, join} from "path";
+import {fileURLToPath} from "url";
+
+import {validateDocuments} from "../middlewares/validateDocuments.js";
+import {saveImage} from "../middlewares/saveImages.js";
+import {login, register}from "../controllers/login.controller.js";
+
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const multerUpload = multer({
+    dest : join(currentDir, '../uploads'),
+    limits : { fieldSize : 5000000}
+})
 
 const router = Router();
 
@@ -11,9 +23,10 @@ router.post('/login',[
     validateDocuments
 ],login);
 router.post('/register',[
-    check('Correo','El email es obligatorio').isEmail(),
-    check('Password','La contraseña es obligatoria').not().isEmpty(),
+/*     check('Correo','El email es obligatorio').isEmail(),
+    check('Password','La contraseña es obligatoria').not().isEmpty(), */
     check('Username','La username es obligatorio').not().isEmpty(),
+    multerUpload.single(('profileFoto'), saveImage),
     validateDocuments
 ],register);
 
