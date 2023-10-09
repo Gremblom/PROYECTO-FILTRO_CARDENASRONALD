@@ -51,8 +51,27 @@ const post = async (req, res)=>{
     }
 }
 
+const update = async (req, res)=>{
+    try {
+        const db = await conexion();
+
+        const {coleccion, id} = req.params;
+
+        const colection = db.collection(coleccion);
+
+        const objId = new ObjectId(id);
+
+        await colection.findOneAndUpdate({_id : objId}, {$set : req.body});
+
+        res.json({ms : "Documento actualizado exitosamente"});
+    } catch (error) {
+        res.status(400).json({ms : error.message});
+    }
+}
+
 export {
     getAll,
     getOne,
-    post
+    post,
+    update
 }
