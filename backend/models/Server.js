@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import routesLogin from "../routes/login.routes.js";
 
 class Server{
     constructor(){
@@ -14,7 +15,7 @@ class Server{
         this.middlewares();
 
         this.rutas = {
-
+            login:'/auth'
         }
 
         this.routes();
@@ -32,7 +33,7 @@ class Server{
     }
 
     routes(){
-        
+        this.app.use(this.rutas.login,routesLogin)
     }
 }
 
