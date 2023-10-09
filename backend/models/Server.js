@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import routesLogin from "../routes/login.routes.js";
 
+import routesGeneral from "../routes/general.routes.js";
+
 class Server{
     constructor(){
         this.app = express();
@@ -15,7 +17,8 @@ class Server{
         this.middlewares();
 
         this.rutas = {
-            login:'/auth'
+            login:'/auth',
+            general : '/api'
         }
 
         this.routes();
@@ -33,7 +36,8 @@ class Server{
     }
 
     routes(){
-        this.app.use(this.rutas.login,routesLogin)
+        this.app.use(this.rutas.login,routesLogin);
+        this.app.use(this.rutas.general, routesGeneral);
     }
 }
 
