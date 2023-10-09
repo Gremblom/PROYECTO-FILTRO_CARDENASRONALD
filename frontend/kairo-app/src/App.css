@@ -28,15 +28,51 @@ body::before {
   z-index: -1; /* Asegura que el fondo oscuro esté detrás del contenido */
 }
 
-.App {
-  
-}
-
-
-
 .logocarga{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.login{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-blanco);
+  padding: 5rem;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login form button{
+  color: var(--color-blanco);
+  margin: 0.5rem;
+  padding: 0.5rem 2rem;
+  background-color: var(--color-naranja);
+  border: none;
+  border-radius: 3.5rem;
+}
+
+.login form input{
+  width: 40rem;
+  border-radius: 3rem;
+  padding: 0.2rem;
+}
+
+.login form label{
+  display: flex;
+  justify-content: flex-start;
+  
+  width: 100%;
 }
