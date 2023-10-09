@@ -1,38 +1,42 @@
+:root{
+  --color-negro : #000000;
+  --color-blanco:  #fff;
+  --color-gris: #707070;
+  --color-naranja: #ff721b;
+  --color-verde : #00D010;
+  --color-rojo : #FF0000
+
+
+}
+
+body {
+  background-image: url('asset/fondo.png'); /* Reemplaza 'ruta-de-tu-imagen.jpg' con la URL de tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Puedes ajustar el nivel de opacidad ajustando el valor alfa (0.5 en este caso) */
+  z-index: -1; /* Asegura que el fondo oscuro esté detrás del contenido */
+}
+
 .App {
-  text-align: center;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logocarga{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
