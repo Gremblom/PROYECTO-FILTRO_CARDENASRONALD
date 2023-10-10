@@ -29,6 +29,35 @@ const login = async (req, res) => {
     }
 }
 
+
+const register = async (req, res) => {
+    try {
+        const db = await conection();
+        const coleccion = db.collection('usuario');
+        const emailExist = await coleccion.findOne({ Correo: req.body.correo });
+        if (emailExist) {
+            return res.status(404).send('Email ya existe');
+        }
+        else {
+            const { Username, Correo, Password,Rol,ProfileFoto } = req.body;
+            const salt = bcryptjs.genSaltSync();
+            const encriptPassword = bcryptjs.hashSync(Password, salt);
+            const data = {
+                Username,
+                Correo,
+                Rol,
+                ProfileFoto,
+                Password: encriptPassword
+            }
+            const response = await coleccion.insertOne(data);
+            res.status(200).send(response);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export {
-    login
+    login,
+    register
 } 
