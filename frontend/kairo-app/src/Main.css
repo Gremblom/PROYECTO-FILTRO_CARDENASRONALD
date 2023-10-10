@@ -1,0 +1,43 @@
+:root{
+    --color-negro : #000000;
+    --color-blanco:  #fff;
+    --color-gris: #707070;
+    --color-naranja: #ff721b;
+    --color-verde : #00D010;
+    --color-rojo : #FF0000
+  }
+
+
+
+ 
+.mainpg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: var(--color-negro) 1px solid;
+    padding: 0 20% 0 8rem ;
+    
+    
+}
+
+.accion{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gestor{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0.5rem;
+    right: 0.5rem;
+    gap: 0.5rem;
+}
