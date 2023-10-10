@@ -10,8 +10,6 @@ export default function Login(){
         history.push('/Bienvenido');
     };
     return(
-        
-        
         <div className="login">
             <img src={logo} width={100} alt="" />
             <h2 className="media">MEDIA</h2>
@@ -19,9 +17,9 @@ export default function Login(){
             <p>Por favor ingresa los siguientes datos para ingresar a la plataforma</p>
             <form>
                 <label htmlFor="">Usuario</label>
-                <input type="text" />
-                <label htmlFor="">Contraseña</label>
-                <input type="text" />
+                <input type="text" className='bg-white'/>
+                <label className='' htmlFor="">Contraseña</label>
+                <input type="text" className='bg-white'/>
                 <button type="submit" onClick={redirigirANuevaRuta}>Ingresar al panel</button>
             </form>
             <h6>Tienes problemas para ingresar? Por favor contactarse con asistencia técnica lo más pronto posible</h6>
