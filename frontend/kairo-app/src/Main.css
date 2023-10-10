@@ -49,22 +49,40 @@
     text-align: center;
 }
 
-.list{
-    display: flex;
-    justify-content: center;
-}
-
-.tabla{
-    border-collapse: collapse; 
+.list {
+    display: grid;
     
-    width: 100%;
-}
-.tabla tr {
-    background-color: #f0f0f0; 
-    border: 1px solid #000; 
-    border-radius: 3rem;  
+    gap: 5px; 
+    padding: 0 10rem;
+    justify-content: start;
   }
   
-.tabla td {
-  padding: 10px; 
+.items{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    
+}
+  .item {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid black; 
+    border-radius: 3rem;
+    grid-template-columns: repeat(9, 1fr); 
+    width: 100%;
+  }
+  
+  .header {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+    font-weight: bold; 
+
+  }
+  
+.faBarss{
+     display: flex;
+     width: 10%;
+     padding: 0 0.5rem;
 }
