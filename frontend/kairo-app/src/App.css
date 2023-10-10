@@ -112,7 +112,9 @@ body::before {
   border-radius: 50%;
 }
 
-
+.negrilla{
+  font-weight: bold;
+}
 
 
 

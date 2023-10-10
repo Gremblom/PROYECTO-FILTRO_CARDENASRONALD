@@ -1,13 +1,13 @@
 import '../Main.css';
 
 import Navbar from './navbar';
-
+import Panel from './panel';
 
 export default function Main() {
     return(
         <div className='mainpg'>
-            <Navbar></Navbar>
-            <div></div>
+            <Navbar/>
+            <Panel/>
         </div>
     )
 }
