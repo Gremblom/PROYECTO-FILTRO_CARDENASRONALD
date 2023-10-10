@@ -13,7 +13,8 @@ function App() {
           <Route exact path="/" render={() => <Carga ruta="login" />} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/bienvenido" component={Bienvenido}/>
-        
+          <Route exact path="/cargando" render={() => <Carga ruta="main" />}/>
+
       </Router>
     </div>
   );

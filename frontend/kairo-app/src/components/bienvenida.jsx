@@ -1,11 +1,22 @@
 import logo from "../asset/KARIO_LOGO.png";
-
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 
 
 export default function Bienvenido (){
+    const history = useHistory();
+
+  useEffect(() => {
+        const tiempoEspera = 5000;
+        const redirigir = setTimeout(() => {
+          history.push(`/cargando`);
+    }, tiempoEspera);
+
+    return () => clearTimeout(redirigir);
+  }, [history]);
     return(
         <div className="welcome">
             <img src={logo} width={100} alt="" />
