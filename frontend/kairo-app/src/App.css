@@ -5,12 +5,20 @@
   --color-naranja: #ff721b;
   --color-verde : #00D010;
   --color-rojo : #FF0000
+}
+@font-face {
+  font-family: 'Myriad Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Myriad Pro Regular'), url('./asset/MYRIADPRO-REGULAR.woff') format('woff');
+  }
 
-
+*{
+  font-family:'Myriad Pro Regular';font-weight:normal;
 }
 
 body {
-  background-image: url('asset/fondo.png'); /* Reemplaza 'ruta-de-tu-imagen.jpg' con la URL de tu imagen */
+  background-image: url('asset/fondo.png'); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -24,12 +32,13 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Puedes ajustar el nivel de opacidad ajustando el valor alfa (0.5 en este caso) */
-  z-index: -1; /* Asegura que el fondo oscuro esté detrás del contenido */
+  background-color: rgba(0, 0, 0, 0.7); 
+  z-index: -1; 
 }
 
 .logocarga{
   position: absolute;
+  animation: parpadeo 5s infinite;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -44,8 +53,11 @@ body::before {
   padding: 5rem;
   border-radius: 3rem;
   display: flex;
+  text-align: center;
   flex-direction: column;
   align-items: center;
+  width: 50%;
+  animation: fadeIn 1s;
 }
 
 .login form{
@@ -53,6 +65,7 @@ body::before {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .login form button{
@@ -65,9 +78,11 @@ body::before {
 }
 
 .login form input{
-  width: 40rem;
+  width: 100%;
+  border: var(--color-gris) 1px solid;
   border-radius: 3rem;
-  padding: 0.2rem;
+  padding: 0.5rem;
+  opacity: 1;
 }
 
 .login form label{
@@ -76,3 +91,54 @@ body::before {
   
   width: 100%;
 }
+
+.welcome{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-blanco);
+  padding: 5rem;
+  border-radius: 3rem;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  animation: fadeIn 3s;
+}
+
+.redondear{
+  border-radius: 50%;
+}
+
+
+
+
+
+  
+
+
+@keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
