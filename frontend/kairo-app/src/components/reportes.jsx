@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 
@@ -10,9 +10,12 @@ export default function Reportes(){
     const [Asunto, setAsunto] = useState("")
     const [Descripcion, setDescripcion] = useState("")
 
+    useEffect(()=>{
+        setUsuario(localStorage.getItem("id"));
+    }, [])
+
     const sendReport = ()=>{
         try {
-
             const data = {
                 Usuario,
                 TipoReporte,
@@ -33,10 +36,6 @@ export default function Reportes(){
 
     return(
         <form className="colorful-form">
-            <div className="form-group">
-                <label className="form-label" for="Usuario">Usuario</label>
-                <input onChange={(e) => setUsuario(e.target.value)} required="" placeholder="Ingrese su correo" className="form-input" name="Usuario" type="text" />
-            </div>
             <div className="form-group">
                 <label className="form-label" for="Categoria">Categoria</label>
                 <select onChange={(e) => setTipoReporte(e.target.value)} required="" placeholder="Categoria" className="form-input" name="TipoReporte" id="TipoReporte">
