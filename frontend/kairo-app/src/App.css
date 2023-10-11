@@ -151,3 +151,7 @@ body::before {
 }
 
 
+.centrarElemento{
+  display: flex;
+  justify-content: center;
+}
