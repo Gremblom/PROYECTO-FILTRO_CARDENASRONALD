@@ -1,11 +1,10 @@
 import React,{useState} from 'react';
 import logo from "../asset/KARIO_LOGO.png";
 import { useHistory } from 'react-router-dom';
-import Carga from "./pgCarga";
 import Swal from 'sweetalert2'
 import axios from "axios";
 
-
+import Read from "./API/api";
 
 export default function Login(){
     const [password,setPassword] = useState("");
@@ -19,7 +18,8 @@ export default function Login(){
             }) 
             localStorage.setItem('token',login.data.token);
             localStorage.setItem('userName',login.data.user.Username);
-            localStorage.setItem('imgUser',login.data.user.Img);
+            localStorage.setItem('imgUser',login.data.user.ProfileFoto);
+            localStorage.setItem('id',login.data.user._id);
             Swal.fire({
                 title: 'Iniciando Sesion',
                 text: 'Datos validos',
