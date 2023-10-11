@@ -3,16 +3,18 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-
-
-
 export default function Bienvenido (){
     const history = useHistory();
-
+    const userName = localStorage.getItem('userName')
   useEffect(() => {
+      if(!localStorage.getItem('token')){
+        history.push('/login')
+      }
         const tiempoEspera = 5000;
         const redirigir = setTimeout(() => {
+          localStorage.removeItem('userName')
           history.push(`/cargando`);
+
     }, tiempoEspera);
 
     return () => clearTimeout(redirigir);
@@ -23,7 +25,7 @@ export default function Bienvenido (){
             <h2 className="media">MEDIA</h2>
             <h1>Bienvenido de nuevo</h1>
             <img src={logo} className="redondear" width={100} alt="" />
-            <p>Pedro Felipe Gómez Bonilla</p>
+            <p>{userName}</p>
             <h6>Usuario Administrador</h6>
         </div>
     )

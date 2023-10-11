@@ -5,6 +5,7 @@ import Login from './components/login';
 import Bienvenido from './components/bienvenida';
 import Ayuda from './components/ayuda/Ayuda';
 import Reportes from './components/reportes';
+import Main from './components/main';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
           <Route exact path="/cargando" render={() => <Carga ruta="main" />} />
           <Route exact path="/ayuda" component={Ayuda} />
           <Route exact path="/reportes" component={Reportes} />
+          <Route exact path="/bienvenido" component={Bienvenido}/>
+          <Route exact path="/cargando" render={() => <Carga ruta="main" />}/>
+          <Route exact path="/main" component={Main}/>
       </Router>
     </div>
   );
