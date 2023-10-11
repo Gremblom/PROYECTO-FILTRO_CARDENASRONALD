@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
+import Navbar from "./navbar"
+import '../Main.css';
 
 export default function Reportes(){
     let history = useHistory();
@@ -35,30 +37,33 @@ export default function Reportes(){
     }
 
     return(
-        <form className="colorful-form">
-            <div className="form-group">
-                <label className="form-label" for="Categoria">Categoria</label>
-                <select onChange={(e) => setTipoReporte(e.target.value)} required="" placeholder="Categoria" className="form-input" name="TipoReporte" id="TipoReporte">
-                    <option>Escoja una opción válida</option>
-                    <option value="Problema Técnico">Problema Técnico</option>
-                    <option value="Sugerencia">Sugerencia</option>
-                    <option value="Problema de Seguridad">Problema de Seguridad</option>
-                    <option value="Queja">Queja</option>
-                </select>
-            </div>
-            <div className="form-group">
-                <label className="form-label" for="Asunto">Asunto</label>
-                <input onChange={(e) => setAsunto(e.target.value)} required="" placeholder="Ingrese una descripción corta del problema" className="form-input" name="Asunto" id="email" type="email" />
-            </div>
-            <div className="form-group">
-                <label className="form-label" for="Descripcion">Mensaje</label>
-                <textarea onChange={(e) => setDescripcion(e.target.value)} required="" placeholder="Ingrese una descripción detallada del problema" className="form-input" name="Descripcion" id="message"></textarea>
-            </div>
-            <button onClick={(e)=>{
-                e.preventDefault();
-                sendReport();
-            }}
-            className="form-button" type="submit">Submit</button>
-        </form>
+        <div className="centrar">
+            <Navbar/>
+            <form className="colorful-form formadd">
+                <div className="form-group">
+                    <label className="form-label" for="Categoria">Categoria</label>
+                    <select onChange={(e) => setTipoReporte(e.target.value)} required="" placeholder="Categoria" className="form-input" name="TipoReporte" id="TipoReporte">
+                        <option>Escoja una opción válida</option>
+                        <option value="Problema Técnico">Problema Técnico</option>
+                        <option value="Sugerencia">Sugerencia</option>
+                        <option value="Problema de Seguridad">Problema de Seguridad</option>
+                        <option value="Queja">Queja</option>
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label className="form-label" for="Asunto">Asunto</label>
+                    <input onChange={(e) => setAsunto(e.target.value)} required="" placeholder="Ingrese una descripción corta del problema" className="form-input" name="Asunto" id="email" type="email" />
+                </div>
+                <div className="form-group">
+                    <label className="form-label" for="Descripcion">Mensaje</label>
+                    <textarea onChange={(e) => setDescripcion(e.target.value)} required="" placeholder="Ingrese una descripción detallada del problema" className="form-input" name="Descripcion" id="message"></textarea>
+                </div>
+                <button onClick={(e)=>{
+                    e.preventDefault();
+                    sendReport();
+                }}
+                className="form-button" type="submit">Submit</button>
+            </form>
+        </div>
     )
 }

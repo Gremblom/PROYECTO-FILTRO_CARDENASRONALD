@@ -5,9 +5,11 @@ import Login from './components/login';
 import Bienvenido from './components/bienvenida';
 import Ayuda from './components/ayuda/Ayuda';
 import Reportes from './components/reportes';
-import Indicador from './components/CreateIndicador';
+import CrerIndicador from './components/CreateIndicador';
 import Main from './components/main';
-import { ChakraProvider } from '@chakra-ui/react'
+import EliminarIndicador from './components/delete';
+import LsReportes from './components/lsreporte';
+import { ChakraProvider } from '@chakra-ui/react';
 
 
 function App() {
@@ -20,11 +22,14 @@ function App() {
           <Route exact path="/bienvenido" component={Bienvenido} />
           <Route exact path="/cargando" render={() => <Carga ruta="main" />} />
           <Route exact path="/ayuda" component={Ayuda} />
-          <Route exact path="/reportes" component={Reportes} />
+          <Route exact path="/reportes" component={LsReportes} />
+          <Route exact path="/reportesAdd" component={Reportes} />
+          
           <Route exact path="/bienvenido" component={Bienvenido}/>
           <Route exact path="/cargando" render={() => <Carga ruta="main" />}/>
           <Route exact path="/main" component={Main}/>
-          <Route exact path="/indicador" component={Indicador}/>
+          <Route exact path="/indicador" component={CrerIndicador}/>
+          <Route exact path="/eliminarIndicador" component={EliminarIndicador} /> 
       </Router>
       </ChakraProvider>
       

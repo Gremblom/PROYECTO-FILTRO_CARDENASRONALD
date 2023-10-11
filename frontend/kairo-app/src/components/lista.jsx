@@ -1,12 +1,14 @@
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import Read from "./API/api";
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'   
+import axios  from 'axios';
 
 export default function List() {
     const ApiData = Read();
-
+    
     console.log(ApiData);
 
     function obtenerColor(numero) {
@@ -19,6 +21,12 @@ export default function List() {
       } else {
         return 'Color no definido';
       }
+    }
+
+    const getOne = async(id)=>{
+      const indicador = await axios.get(`http://localhost:7234/api/indicador/one/${id}`)
+      console.log(indicador);
+      return indicador
     }
 
     return (
@@ -34,12 +42,16 @@ export default function List() {
                 <div className="negrilla">Cumplimiento</div>
                 <div className="negrilla">Area</div>
             </div>
+            <div className='padre'>
             {ApiData.map((data)=>{
                 const desc = data.Descripcion.slice(0, 9);
 
                 return(
                 <div className='items'>
-                    <div className="item">
+                    <div className="item" onClick={()=>{
+                      const id = data._id
+                      getOne(id)
+                    }}>
                         <div>{data.Indicador}</div>
                         <div>{desc}...</div>
                         <div>{data.Categoria}</div>
@@ -48,7 +60,7 @@ export default function List() {
                         <div>{data.Formula}</div>
                         <div>{data.Frecuencia}</div>
                         <div>
-                          <CircularProgress value={data.Cumplimiento} size='100px' color={obtenerColor(data.Cumplimiento)}>
+                          <CircularProgress value={data.Cumplimiento} size='70px' color={obtenerColor(data.Cumplimiento)}>
                             <CircularProgressLabel>{data.Cumplimiento}%</CircularProgressLabel>                          
                           </CircularProgress>
                         </div>
@@ -60,6 +72,7 @@ export default function List() {
                 </div>
                 )
             })}
+            </div>
             <div>
                 <Link to="/indicador">
                 <button className='btnAddelement'>Añadir Elemento</button>

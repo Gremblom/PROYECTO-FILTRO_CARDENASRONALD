@@ -13,19 +13,23 @@ export default function Navbar() {
     const redirigir = (ruta) => {
         history.push(`/${ruta}`); 
     }
+
+    const recargar = ()=>{
+        window.location.reload(); 
+    }
     return(
         
         <div >
             <div className="navbar">
-                <div className="accion">
+                <div className="accion" onClick={() => redirigir("indicador")}>
                     <FontAwesomeIcon icon={faCirclePlus} size="2xl" style={{color: "#ff721b",}} />
                     <h3>Añadir</h3>
                 </div>
-                <div className="accion">
+                <div className="accion" onClick={() => recargar()}>
                     <FontAwesomeIcon icon={faRotateRight} size="2xl" style={{color: "#ff721b",}} />
                     <h3>Refrescar</h3>
                 </div>
-                <div className="accion">
+                <div className="accion" onClick={() => redirigir("eliminarIndicador")}>
                     <img src={basura} alt="" />
                     <h3>Eliminar</h3>
                 </div>
