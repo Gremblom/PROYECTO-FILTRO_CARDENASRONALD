@@ -18,8 +18,8 @@ export default function Login(){
             }) 
             localStorage.setItem('token',login.data.token);
             localStorage.setItem('userName',login.data.user.Username);
-            localStorage.setItem('imgUser',login.data.user.ProfileFoto);
             localStorage.setItem('id',login.data.user._id);
+            localStorage.setItem('ProfileFoto',login.data.user.ProfileFoto);
             Swal.fire({
                 title: 'Iniciando Sesion',
                 text: 'Datos validos',
