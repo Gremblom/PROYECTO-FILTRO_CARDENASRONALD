@@ -229,3 +229,20 @@ textarea.form-input {
   width: 100%;
   margin: 5rem auto;
 }
+
+
+/* card */  
+
+.contenedorCard{
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5rem ;
+  gap: 1rem !important;
+  
+}
+.card{
+  
+  width: 15rem;
+  
+} 
