@@ -4,19 +4,24 @@ import {
     ModalContent,
     ModalHeader,
     ModalFooter,
-    ModalBody,
     ModalCloseButton,
     useDisclosure,
     Button
   } from '@chakra-ui/react'
-import {useState} from "react";  
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear,faBell } from '@fortawesome/free-solid-svg-icons'
+import {useHistory} from "react-router-dom";
 import logo from "../asset/KARIO_LOGO.png";
 
 export default function Gestor(){
+    let history = useHistory();
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const logOut = ()=>{
+        localStorage.removeItem("token");
+        history.push("/login");
+    }
 
     return(
         <div className='gestor'>
@@ -24,20 +29,14 @@ export default function Gestor(){
             <FontAwesomeIcon icon={faBell} size="lg" style={{color: "#000000",}}/>
             <img src={logo} onClick={onOpen} className='redondear' width={50} alt="" />
 
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal isOpen={isOpen} onClose={onClose} top size='xs'>
             <ModalOverlay />
                 <ModalContent>
-                <ModalHeader>Modal Title</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                    A
-                </ModalBody>
-
                 <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                    <Button colorScheme='green' variant='outline' mr={3} onClick={onClose}>
                     Close
                     </Button>
-                    <Button variant='ghost'>Secondary Action</Button>
+                    <Button colorScheme='red' variant='outline' onClick={logOut}>LogOut</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>
