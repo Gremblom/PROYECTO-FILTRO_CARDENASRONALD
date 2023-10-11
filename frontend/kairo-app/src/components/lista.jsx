@@ -80,7 +80,8 @@ export default function List() {
                 <div className='faBarss'>
                     <FontAwesomeIcon icon={faBars} size="2xl" style={{color: "#000000", }} />
                 </div>
-            </div><div className='items'>
+            </div>
+            <div className='items'>
                 <div className="item">
                     <div>Modelo3D</div>
                     <div>interes por dise....</div>
@@ -96,7 +97,9 @@ export default function List() {
                     <FontAwesomeIcon icon={faBars} size="2xl" style={{color: "#000000", }} />
                 </div>
             </div>
-            
+            <div >
+                <button className='btnAddelement'>Añadir Elemento</button>
+            </div>
         </div>
     )
 }

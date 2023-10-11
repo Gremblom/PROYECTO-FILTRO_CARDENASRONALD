@@ -21,7 +21,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: var(--color-negro) 1px solid;
+    border-bottom: var(--color-negro) 1px solid;
     padding: 0 20% 0 8rem ;
     
     
@@ -47,14 +47,20 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    
+    width: 100%;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+.panel h1{
+    margin-bottom: 1rem;
 }
 
 .list {
     display: grid;
-    
     gap: 5px; 
-    padding: 0 10rem;
-    justify-content: start;
+    padding: 0 1rem;
+    justify-content: center;
   }
   
 .items{
@@ -85,4 +91,15 @@
      display: flex;
      width: 10%;
      padding: 0 0.5rem;
+}
+
+.btnAddelement{
+    color: var(--color-blanco);
+    margin: 0.5rem;
+    padding: 1rem 4rem;
+    
+    background-color: var(--color-naranja);
+    border: none;
+    border-radius: 3.5rem;
+    
 }
