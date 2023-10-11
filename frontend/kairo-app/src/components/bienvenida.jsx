@@ -6,6 +6,7 @@ export default function Bienvenido (){
     const history = useHistory();
     const img = localStorage.getItem('ProfileFoto');
     const userName = localStorage.getItem('Username');
+    const rol = localStorage.getItem('Rol');
     useEffect(() => {
       if(!localStorage.getItem('token')){
         history.push('/login')
@@ -24,7 +25,7 @@ export default function Bienvenido (){
             <h1>Bienvenido de nuevo</h1>
             <img src={img} className="redondear" width={100} />
             <p>{userName}</p>
-            <h6>Usuario Administrador</h6>
+            <h6>{rol}</h6>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-
+import { Link } from 'react-router-dom'
 
 export default function List() {
     return (
@@ -98,7 +98,9 @@ export default function List() {
                 </div>
             </div>
             <div >
+                <Link to="/indicador">
                 <button className='btnAddelement'>Añadir Elemento</button>
+                </Link>
             </div>
         </div>
     )

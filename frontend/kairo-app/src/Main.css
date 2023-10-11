@@ -97,7 +97,7 @@
     color: var(--color-blanco);
     margin: 0.5rem;
     padding: 1rem 4rem;
-    
+    cursor: pointer;
     background-color: var(--color-naranja);
     border: none;
     border-radius: 3.5rem;
