@@ -20,7 +20,6 @@ export default function Navbar() {
                 <div className="accion">
                     <FontAwesomeIcon icon={faCirclePlus} size="2xl" style={{color: "#ff721b",}} />
                     <h3>Añadir</h3>
-
                 </div>
                 <div className="accion">
                     <FontAwesomeIcon icon={faRotateRight} size="2xl" style={{color: "#ff721b",}} />

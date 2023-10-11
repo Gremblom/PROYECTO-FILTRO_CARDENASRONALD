@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 import Read from "./API/api";
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'   
-
 
 export default function List() {
     const ApiData = Read();
@@ -61,8 +61,9 @@ export default function List() {
                 )
             })}
             <div>
-
+                <Link to="/indicador">
                 <button className='btnAddelement'>Añadir Elemento</button>
+                </Link>
             </div>
         </div>
     )
