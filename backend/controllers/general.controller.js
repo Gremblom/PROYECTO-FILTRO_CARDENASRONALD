@@ -43,9 +43,21 @@ const post = async (req, res)=>{
 
         const colection = db.collection(coleccion);
 
-        await colection.insertOne(req.body);
+        if (coleccion == 'reporte'){
 
-        res.json({ms : "Documento ingresado exitosamente"});
+            const {Usuario, ...data} = req.body;
+
+            const objId = new ObjectId(Usuario);
+
+            await colection.insertOne({Usuario: objId, ...data});
+
+            res.json({ms : "Documento ingresado exitosamente"});
+        } else {
+
+            await colection.insertOne(req.body);
+
+            res.json({ms : "Documento ingresado exitosamente"});
+        }
     } catch (error) {
         res.status(400).json({ms : error.message});
     }

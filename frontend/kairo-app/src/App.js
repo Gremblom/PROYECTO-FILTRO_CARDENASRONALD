@@ -7,10 +7,13 @@ import Ayuda from './components/ayuda/Ayuda';
 import Reportes from './components/reportes';
 import Indicador from './components/CreateIndicador';
 import Main from './components/main';
+import { ChakraProvider } from '@chakra-ui/react'
+
 
 function App() {
   return (
     <div className="App">
+      <ChakraProvider>
       <Router>
           <Route exact path="/" render={() => <Carga ruta="login" />} />
           <Route exact path="/login" component={Login} />
@@ -23,6 +26,8 @@ function App() {
           <Route exact path="/main" component={Main}/>
           <Route exact path="/indicador" component={Indicador}/>
       </Router>
+      </ChakraProvider>
+      
     </div>
   );
 }
