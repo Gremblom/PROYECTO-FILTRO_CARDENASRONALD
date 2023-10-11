@@ -1,26 +1,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
-
-export default function List() {
-    function obtenerColor(numero) {
-        if (numero >= 1 && numero <= 34) {
-          return 'red';
-        } else if (numero >= 35 && numero <= 67) {
-          return 'orange';
-        } else if (numero >= 68 && numero <= 100) {
-          return 'green';
-        } else {
-          return 'Color no definido';
-        }
-      }
 import Read from "./API/api";
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'   
+
 
 export default function List() {
     const ApiData = Read();
 
     console.log(ApiData);
 
+    function obtenerColor(numero) {
+      if (numero >= 1 && numero <= 34) {
+        return 'red';
+      } else if (numero >= 35 && numero <= 67) {
+        return 'orange';
+      } else if (numero >= 68 && numero <= 100) {
+        return 'green';
+      } else {
+        return 'Color no definido';
+      }
+    }
 
     return (
         <div className="list">
@@ -50,7 +49,7 @@ export default function List() {
                         <div>{data.Frecuencia}</div>
                         <div>
                           <CircularProgress value={data.Cumplimiento} size='100px' color={obtenerColor(data.Cumplimiento)}>
-                            <CircularProgressLabel>data.Cumplimiento%</CircularProgressLabel>                          
+                            <CircularProgressLabel>{data.Cumplimiento}%</CircularProgressLabel>                          
                           </CircularProgress>
                         </div>
                         <div>{data.Area}</div>

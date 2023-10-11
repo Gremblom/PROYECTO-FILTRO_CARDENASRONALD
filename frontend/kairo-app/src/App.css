@@ -24,16 +24,17 @@ h1{
 }
 
 body {
-  background-image: url('asset/fondo.png'); 
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-image: url('asset/fondo.png') !important ;  
+  background-size: cover ;
+  background-position: center ;
+  background-attachment: fixed ;
+  background-repeat: no-repeat ;
+  position: static !important;
 }
 body::before {
   content: "";
-  display: block;
-  position: fixed;
+  display: block ;
+  position: fixed ;
   top: 0;
   left: 0;
   width: 100%;
