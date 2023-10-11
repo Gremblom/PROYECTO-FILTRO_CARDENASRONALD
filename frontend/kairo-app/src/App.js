@@ -6,10 +6,13 @@ import Bienvenido from './components/bienvenida';
 import Ayuda from './components/ayuda/Ayuda';
 import Reportes from './components/reportes';
 import Main from './components/main';
+import { ChakraProvider } from '@chakra-ui/react'
+
 
 function App() {
   return (
     <div className="App">
+      <ChakraProvider>
       <Router>
           <Route exact path="/" render={() => <Carga ruta="login" />} />
           <Route exact path="/login" component={Login} />
@@ -21,6 +24,8 @@ function App() {
           <Route exact path="/cargando" render={() => <Carga ruta="main" />}/>
           <Route exact path="/main" component={Main}/>
       </Router>
+      </ChakraProvider>
+      
     </div>
   );
 }
