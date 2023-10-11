@@ -57,7 +57,8 @@
 }
 
 .list {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 5px; 
     padding: 0 1rem;
     justify-content: center;
@@ -82,14 +83,13 @@
   
   .header {
     display: grid;
-    grid-template-columns: repeat(10, 1fr); 
+    grid-template-columns: repeat(9, 1fr) 4%; 
     font-weight: bold; 
-
   }
   
 .faBarss{
      display: flex;
-     width: 10%;
+     width: fit-content;
      padding: 0 0.5rem;
 }
 

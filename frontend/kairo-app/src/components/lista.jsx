@@ -1,8 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
+import Read from "./API/api";
 
 export default function List() {
+    const ApiData = Read();
+
+    console.log(ApiData);
+
     return (
         <div className="list">
             <div className="header">
@@ -16,88 +21,29 @@ export default function List() {
                 <div className="negrilla">Cumplimiento</div>
                 <div className="negrilla">Area</div>
             </div>
+            {ApiData.map((data)=>{
+                const desc = data.Descripcion.slice(0, 9);
 
-            <div className='items'>
-                <div className="item">
-                    <div>Modelo3D</div>
-                    <div>interes por dise....</div>
-                    <div>Baja</div>
-                    <div>12/05/21</div>
-                    <div>12/12/21</div>
-                    <div>Meg.Agil</div>
-                    <div>1/4</div>
-                    <div>31%</div>
-                    <div>Marketing</div>
+                return(
+                <div className='items'>
+                    <div className="item">
+                        <div>{data.Indicador}</div>
+                        <div>{desc}...</div>
+                        <div>{data.Categoria}</div>
+                        <div>{data.FechaInicio}</div>
+                        <div>{data.FechaTerminacion}</div>
+                        <div>{data.Formula}</div>
+                        <div>{data.Frecuencia}</div>
+                        <div>{data.Cumplimiento}%</div>
+                        <div>{data.Area}</div>
+                    </div>
+                    <div className='faBarss'>
+                        <FontAwesomeIcon icon={faBars} size="2xl" style={{color: "#000000", }} />
+                    </div>
                 </div>
-                <div className='faBarss'>
-                    <FontAwesomeIcon icon={faBars} size="2xl" style={{color: "#000000", }} />
-                </div>
-            </div>
-            <div className='items'>
-                <div className="item">
-                    <div>Modelo3D</div>
-                    <div>interes por dise....</div>
-                    <div>Baja</div>
-                    <div>12/05/21</div>
-                    <div>12/12/21</div>
-                    <div>Meg.Agil</div>
-                    <div>1/4</div>
-                    <div>31%</div>
-                    <div>Marketing</div>
-                </div>
-                <div className='faBarss'>
-                    <FontAwesomeIcon icon={faBars} size="2xl" style={{color: "#000000", }} />
-                </div>
-            </div>
-            <div className='items'>
-                <div className="item">
-                    <div>Modelo3D</div>
-                    <div>interes por dise....</div>
-                    <div>Baja</div>
-                    <div>12/05/21</div>
-                    <div>12/12/21</div>
-                    <div>Meg.Agil</div>
-                    <div>1/4</div>
-                    <div>31%</div>
-                    <div>Marketing</div>
-                </div>
-                <div className='faBarss'>
-                    <FontAwesomeIcon icon={faBars} size="2xl" style={{color: "#000000", }} />
-                </div>
-            </div>
-            <div className='items'>
-                <div className="item">
-                    <div>Modelo3D</div>
-                    <div>interes por dise....</div>
-                    <div>Baja</div>
-                    <div>12/05/21</div>
-                    <div>12/12/21</div>
-                    <div>Meg.Agil</div>
-                    <div>1/4</div>
-                    <div>31%</div>
-                    <div>Marketing</div>
-                </div>
-                <div className='faBarss'>
-                    <FontAwesomeIcon icon={faBars} size="2xl" style={{color: "#000000", }} />
-                </div>
-            </div>
-            <div className='items'>
-                <div className="item">
-                    <div>Modelo3D</div>
-                    <div>interes por dise....</div>
-                    <div>Baja</div>
-                    <div>12/05/21</div>
-                    <div>12/12/21</div>
-                    <div>Meg.Agil</div>
-                    <div>1/4</div>
-                    <div>31%</div>
-                    <div>Marketing</div>
-                </div>
-                <div className='faBarss'>
-                    <FontAwesomeIcon icon={faBars} size="2xl" style={{color: "#000000", }} />
-                </div>
-            </div>
-            <div >
+                )
+            })}
+            <div>
                 <button className='btnAddelement'>Añadir Elemento</button>
             </div>
         </div>
