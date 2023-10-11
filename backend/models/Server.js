@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import routesLogin from "../routes/login.routes.js";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from '../swagger/swagger.json' assert {type: "json"}
 
 import routesGeneral from "../routes/general.routes.js";
 
@@ -33,6 +35,7 @@ class Server{
     middlewares(){
         this.app.use(express.json());
         this.app.use(cors(this.configCors));
+        this.app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocument));
     }
 
     routes(){

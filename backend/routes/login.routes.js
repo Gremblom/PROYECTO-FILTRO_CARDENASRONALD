@@ -1,8 +1,5 @@
 import {Router} from "express";
 import { check } from "express-validator";
-
-import {validateDocuments} from "../middlewares/validateDocuments.js";
-import {login}from "../controllers/login.controller.js";
 import {validateDocuments} from "../middlewares/validateDocuments.js";
 import {login, register}from "../controllers/login.controller.js";
 

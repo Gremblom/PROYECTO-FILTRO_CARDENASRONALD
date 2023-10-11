@@ -1,0 +1,852 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API Documentación",
+      "version": "1.0.0",
+      "description": "Documentación de la API para Usuario, Reporte e Indicador."
+    },
+    "servers": [
+      {
+        "url": "http://localhost:7234",
+        "description": "Localhost Server for testing the API"
+      }
+    ],
+    "paths": {
+      "/api/usuario/get": {
+        "get": {
+          "tags": ["Usuario"],
+          "summary": "Obtener todos los usuarios",
+          "description": "Obtiene una lista de todos los usuarios.",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Usuario"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/usuario/new": {
+        "post": {
+          "tags": ["Usuario"],
+          "summary": "Crear un nuevo usuario",
+          "description": "Crea un nuevo usuario.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/usuario/del/{id}": {
+        "delete": {
+          "tags": ["Usuario"],
+          "summary": "Eliminar un usuario",
+          "description": "Elimina un usuario existente.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID del usuario a eliminar (Formato ObjectId de MongoDB)",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Usuario eliminado exitosamente"
+                      }
+                    },
+                    "example": {
+                      "message": "Usuario eliminado exitosamente"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/usuario/upd/{id}": {
+        "put": {
+          "tags": ["Usuario"],
+          "summary": "Actualizar un usuario",
+          "description": "Actualiza un usuario existente.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID del usuario a actualizar (Formato ObjectId de MongoDB)",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/reporte/get": {
+        "get": {
+          "tags": ["Reporte"],
+          "summary": "Obtener todos los reportes",
+          "description": "Obtiene una lista de todos los reportes.",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Reporte"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/reporte/new": {
+        "post": {
+          "tags": ["Reporte"],
+          "summary": "Crear un nuevo reporte",
+          "description": "Crea un nuevo reporte.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReporteInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Reporte"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/reporte/del/{id}": {
+        "delete": {
+          "tags": ["Reporte"],
+          "summary": "Eliminar un reporte",
+          "description": "Elimina un reporte existente.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID del reporte a eliminar (Formato ObjectId de MongoDB)",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Reporte eliminado exitosamente"
+                      }
+                    },
+                    "example": {
+                      "message": "Reporte eliminado exitosamente"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/reporte/upd/{id}": {
+        "put": {
+          "tags": ["Reporte"],
+          "summary": "Actualizar un reporte",
+          "description": "Actualiza un reporte existente.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID del reporte a actualizar (Formato ObjectId de MongoDB)",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReporteInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Reporte"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/indicador/get": {
+        "get": {
+          "tags": ["Indicador"],
+          "summary": "Obtener todos los indicadores",
+          "description": "Obtiene una lista de todos los indicadores.",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Indicador"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/indicador/new": {
+        "post": {
+          "tags": ["Indicador"],
+          "summary": "Crear un nuevo indicador",
+          "description": "Crea un nuevo indicador.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IndicadorInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Indicador"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/indicador/del/{id}": {
+        "delete": {
+          "tags": ["Indicador"],
+          "summary": "Eliminar un indicador",
+          "description": "Elimina un indicador existente.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID del indicador a eliminar (Formato ObjectId de MongoDB)",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Indicador eliminado exitosamente"
+                      }
+                    },
+                    "example": {
+                      "message": "Indicador eliminado exitosamente"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/indicador/upd/{id}": {
+        "put": {
+          "tags": ["Indicador"],
+          "summary": "Actualizar un indicador",
+          "description": "Actualiza un indicador existente.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID del indicador a actualizar (Formato ObjectId de MongoDB)",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IndicadorInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Indicador"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "example": "Bad Request (could change)"
+                      }
+                    },
+                    "example": {
+                      "error": "Bad Request (could change)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Usuario": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "object",
+              "properties": {
+                "$oid": {
+                  "type": "string",
+                  "example": "6523e9002bd49281aab4f51d"
+                }
+              }
+            },
+            "Username": {
+              "type": "string",
+              "example": "Lorenzo Rueda"
+            },
+            "Correo": {
+              "type": "string",
+              "example": "LorenzoRueda@gmail.com"
+            },
+            "Rol": {
+              "type": "string",
+              "example": "Usuario Estandar"
+            },
+            "ProfileFoto": {
+              "type": "string",
+              "example": "../imgProfile/lorenzo.jpg"
+            }
+          },
+          "required": ["Username", "Correo", "Rol"]
+        },
+        "UsuarioInput": {
+          "type": "object",
+          "properties": {
+            "Username": {
+              "type": "string",
+              "example": "Lorenzo Rueda"
+            },
+            "Correo": {
+              "type": "string",
+              "example": "LorenzoRueda@gmail.com"
+            },
+            "Rol": {
+              "type": "string",
+              "example": "Usuario Estandar"
+            },
+            "ProfileFoto": {
+              "type": "string",
+              "example": "../imgProfile/lorenzo.jpg"
+            },
+            "Password": {
+              "type": "string",
+              "example": "$2a$10$0InESzmZXL71ruDyPKWzROAYxrPy..SFe1i2F7U.MQf6YKcBQxe7i"
+            }
+          },
+          "required": ["Username", "Correo", "Rol", "Password"]
+        },
+        "Reporte": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "object",
+              "properties": {
+                "$oid": {
+                  "type": "string",
+                  "example": "6523e9002bd49281aab4f51d"
+                }
+              }
+            },
+            "Usuario": {
+              "type": "object",
+              "properties": {
+                "ObjectId": {
+                  "type": "string",
+                  "example": "6523e9002bd49281aab4f51e"
+                }
+              }
+            },
+            "TipoReporte": {
+              "type": "string",
+              "example": "Problema de Seguridad"
+            },
+            "Asunto": {
+              "type": "string",
+              "example": "Posible brecha de seguridad"
+            },
+            "Descripcion": {
+              "type": "string",
+              "example": "He notado un comportamiento inusual en mi cuenta. Recibí un correo electrónico de confirmación de inicio de sesión en un dispositivo desconocido. ¿Podría haber una brecha de seguridad en la plataforma?"
+            }
+          },
+          "required": ["Usuario", "TipoReporte", "Asunto", "Descripcion"]
+        },
+        "ReporteInput": {
+          "type": "object",
+          "properties": {
+            "Usuario": {
+              "type": "object",
+              "properties": {
+                "ObjectId": {
+                  "type": "string",
+                  "example": "6523e9002bd49281aab4f51e"
+                }
+              }
+            },
+            "TipoReporte": {
+              "type": "string",
+              "example": "Problema de Seguridad"
+            },
+            "Asunto": {
+              "type": "string",
+              "example": "Posible brecha de seguridad"
+            },
+            "Descripcion": {
+              "type": "string",
+              "example": "He notado un comportamiento inusual en mi cuenta. Recibí un correo electrónico de confirmación de inicio de sesión en un dispositivo desconocido. ¿Podría haber una brecha de seguridad en la plataforma?"
+            }
+          },
+          "required": ["Usuario", "TipoReporte", "Asunto", "Descripcion"]
+        },
+        "Indicador": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "object",
+              "properties": {
+                "$oid": {
+                  "type": "string",
+                  "example": "6523e9002bd49281aab4f51d"
+                }
+              }
+            },
+            "Indicador": {
+              "type": "string",
+              "example": "Modelacion3D"
+            },
+            "Descripcion": {
+              "type": "string",
+              "example": "Este indicador representa la cantidad de modelos en 3D creados para el producto A en el departamento de diseño de la empresa. La modelación en 3D es esencial para visualizar y analizar productos antes de su producción física."
+            },
+            "Categoria": {
+              "type": "string",
+              "example": "Modelación 3D"
+            },
+            "FechaInicio": {
+              "type": "string",
+              "example": "2023-10-01"
+            },
+            "FechaTerminacion": {
+              "type": "string",
+              "example": "2023-10-10"
+            },
+            "Formula": {
+              "type": "string",
+              "example": "Número de modelos en 3D creados"
+            },
+            "Frecuencia": {
+              "type": "string",
+              "example": "1/2"
+            },
+            "Cumplimiento": {
+              "type": "integer",
+              "example": 85
+            },
+            "Area": {
+              "type": "string",
+              "example": "Diseño"
+            }
+          },
+          "required": ["Indicador", "Descripcion", "Categoria", "FechaInicio", "FechaTerminacion", "Formula", "Frecuencia", "Cumplimiento", "Area"]
+        },
+        "IndicadorInput": {
+          "type": "object",
+          "properties": {
+            "Indicador": {
+              "type": "string",
+              "example": "Modelacion3D"
+            },
+            "Descripcion": {
+              "type": "string",
+              "example": "Este indicador representa la cantidad de modelos en 3D creados para el producto A en el departamento de diseño de la empresa. La modelación en 3D es esencial para visualizar y analizar productos antes de su producción física."
+            },
+            "Categoria": {
+              "type": "string",
+              "example": "Modelación 3D"
+            },
+            "FechaInicio": {
+              "type": "string",
+              "example": "2023-10-01"
+            },
+            "FechaTerminacion": {
+              "type": "string",
+              "example": "2023-10-10"
+            },
+            "Formula": {
+              "type": "string",
+              "example": "Número de modelos en 3D creados"
+            },
+            "Frecuencia": {
+              "type": "string",
+              "example": "1/2"
+            },
+            "Cumplimiento": {
+              "type": "integer",
+              "example": 85
+            },
+            "Area": {
+              "type": "string",
+              "example": "Diseño"
+            }
+          },
+          "required": ["Indicador", "Descripcion", "Categoria", "FechaInicio", "FechaTerminacion", "Formula", "Frecuencia", "Cumplimiento", "Area"]
+        }
+      }
+    }
+  }
+  

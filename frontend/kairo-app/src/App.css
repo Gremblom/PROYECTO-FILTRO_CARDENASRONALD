@@ -15,6 +15,12 @@
 
 *{
   font-family:'Myriad Pro Regular';font-weight:normal;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+}
+h1{
+  font-size : 3rem;
 }
 
 body {
@@ -112,7 +118,9 @@ body::before {
   border-radius: 50%;
 }
 
-
+.negrilla{
+  font-weight: bold;
+}
 
 
 

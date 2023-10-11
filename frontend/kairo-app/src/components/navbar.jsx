@@ -16,7 +16,7 @@ export default function Navbar() {
                 </div>
                 <div className="accion">
                     <FontAwesomeIcon icon={faRotateRight} size="2xl" style={{color: "#ff721b",}} />
-                    <h3>Reflescar</h3>
+                    <h3>Refrescar</h3>
                 </div>
                 <div className="accion">
                     <img src={basura} alt="" />
