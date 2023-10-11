@@ -46,10 +46,6 @@ export default function Login(){
             <p>Por favor ingresa los siguientes datos para ingresar a la plataforma</p>
             <form>
                 <label htmlFor="">Usuario</label>
-                <input type="text" className='bg-white'/>
-                <label className='' htmlFor="">Contraseña</label>
-                <input type="text" className='bg-white'/>
-                <button type="submit" onClick={redirigirANuevaRuta}>Ingresar al panel</button>
                 <input type="email" value={correo} onChange={(e)=>setCorreo(e.target.value)} />
                 <label htmlFor="">Contraseña</label>
                 <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
