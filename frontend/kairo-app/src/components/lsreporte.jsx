@@ -2,7 +2,7 @@ import Navbar from "./navbar"
 import '../Main.css';
 import {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
-import { Card, CardHeader, CardBody, CardFooter,Text, SimpleGrid,Heading, Button} from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter,Text, SimpleGrid,Heading} from '@chakra-ui/react'
 import axios  from 'axios';
 
 export default function LsReportes(){
@@ -14,25 +14,25 @@ export default function LsReportes(){
             })
     }, []);
 
-    console.log(ApiData);
-
     return(
         <div>
             <Navbar/>
             
             <SimpleGrid  className="contenedorCard" spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
                 {ApiData.map((data)=>{
+                    const {usuario} = data;
+
                     return(
                         <Card className="card">
                             <CardHeader >
                                 <Heading size='md'>{data.TipoReporte} </Heading>
                             </CardHeader>
                             <CardBody>
-                                <Text>{data.Usuario}:</Text>       
+                                <Text>{usuario[0].Username}:</Text>       
                                 <Text>{data.Asunto}</Text>
                             </CardBody>
                             <CardFooter>
-                                <Text>Descripcion:{data.Descripcion}</Text>
+                                <Text>Descripcion: {data.Descripcion}</Text>
                             </CardFooter>
                         </Card>
                     )
