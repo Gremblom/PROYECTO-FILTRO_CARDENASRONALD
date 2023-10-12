@@ -1,10 +1,8 @@
 import Navbar from "./navbar"
 import '../Main.css';
-
+import React,{useEffect,useState} from "react";
 import { Link, useHistory } from 'react-router-dom';
 import { Card, CardHeader, CardBody, CardFooter,Text, SimpleGrid,Heading, Button} from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
-import { Card, CardHeader, CardBody, CardFooter,Text, SimpleGrid,Heading} from '@chakra-ui/react'
 import axios  from 'axios';
 
 export default function LsReportes(){

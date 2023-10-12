@@ -4,13 +4,11 @@ import {
     ModalContent,
     ModalFooter,
     useDisclosure,
-  Button
+    ModalBody,
+    Button
 } from '@chakra-ui/react'
 
 import React,{useEffect} from 'react'
-    Button,
-    ModalBody
-  } from '@chakra-ui/react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faBell } from '@fortawesome/free-solid-svg-icons'
@@ -38,19 +36,6 @@ export default function Gestor() {
             <FontAwesomeIcon icon={faGear} size="lg" style={{ color: "#000000", }} />
             <FontAwesomeIcon icon={faBell} size="lg" style={{ color: "#000000", }} />
             <img src={localStorage.getItem('ProfileFoto')} onClick={onOpen} className='redondear' width={50} alt="" />
-            <Modal isOpen={isOpen} onClose={onClose} size="xs" placement="left">
-                <ModalOverlay />
-                <ModalContent marginLeft="10%">
-                    <ModalFooter>
-                        <Button colorScheme="green" variant="outline" mr={3} onClick={onClose}>
-                            Close
-                        </Button>
-                        <Button colorScheme="red" variant="outline" onClick={logOut}>
-                            LogOut
-                        </Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
             <Modal isOpen={isOpen} onClose={onClose} top size='xs'>
             <ModalOverlay />
                 <ModalContent>
