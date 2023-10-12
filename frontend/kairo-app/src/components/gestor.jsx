@@ -4,33 +4,38 @@ import {
     ModalContent,
     ModalFooter,
     useDisclosure,
-    Button,
-    ModalBody
-  } from '@chakra-ui/react'
+    ModalBody,
+    Button
+} from '@chakra-ui/react'
+
+import React,{useEffect} from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGear,faBell } from '@fortawesome/free-solid-svg-icons'
-import {useHistory} from "react-router-dom";
-import logo from "../asset/KARIO_LOGO.png";
+import { faGear, faBell } from '@fortawesome/free-solid-svg-icons'
+import { useHistory } from "react-router-dom";
 
-export default function Gestor(){
+export default function Gestor() {
     let history = useHistory();
     const img = localStorage.getItem('ProfileFoto');
     const userName = localStorage.getItem('Username');
     const rol = localStorage.getItem('Rol');
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const logOut = ()=>{
+    const logOut = () => {
         localStorage.removeItem("token");
         history.push("/login");
     }
 
-    return(
+    useEffect(() => {
+        if(!localStorage.getItem('token')){
+          history.push('/login')
+        }
+    },[])
+    return (
         <div className='gestor'>
-            <FontAwesomeIcon icon={faGear} size="lg" style={{color: "#000000",}} />
-            <FontAwesomeIcon icon={faBell} size="lg" style={{color: "#000000",}}/>
-            <img src={logo} onClick={onOpen} className='redondear' width={50} alt="" />
-
+            <FontAwesomeIcon icon={faGear} size="lg" style={{ color: "#000000", }} />
+            <FontAwesomeIcon icon={faBell} size="lg" style={{ color: "#000000", }} />
+            <img src={localStorage.getItem('ProfileFoto')} onClick={onOpen} className='redondear' width={50} alt="" />
             <Modal isOpen={isOpen} onClose={onClose} top size='xs'>
             <ModalOverlay />
                 <ModalContent>

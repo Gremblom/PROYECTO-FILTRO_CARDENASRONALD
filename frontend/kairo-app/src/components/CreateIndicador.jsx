@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 import Navbar from "./navbar"
@@ -17,6 +17,11 @@ export default function CrerIndicador(){
     const [Cumplimiento, setCumplimiento] = useState("");
     const [Area, setArea] = useState("");
 
+    useEffect(() => {
+        if(!localStorage.getItem('token')){
+          history.push('/login')
+        }
+    },[])
     const sendIndicador = ()=>{
         try {
 

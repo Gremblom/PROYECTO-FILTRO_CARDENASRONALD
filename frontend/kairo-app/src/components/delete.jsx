@@ -1,4 +1,4 @@
-import {useState} from "react"; 
+import {useState,useEffect} from "react"; 
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 
@@ -10,6 +10,12 @@ export default function DeleteForm(){
     const [id, setId] = useState("");
 
     const ApiData = Read();
+
+    useEffect(() => {
+        if(!localStorage.getItem('token')){
+          history.push('/login')
+        }
+    },[])
 
     const deleteDoc = ()=>{
         try {
