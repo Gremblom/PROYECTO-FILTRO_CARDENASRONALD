@@ -9,9 +9,22 @@ const getAll = async (req, res)=>{
 
         const colection = db.collection(coleccion);
 
-        const response = await colection.find().toArray();
+        if (coleccion == 'reporte'){
+            const response = await colection.aggregate([
+                {$lookup : {
+                    from : 'usuario',
+                    localField : 'Usuario',
+                    foreignField : '_id',
+                    as : 'usuario'
+                }}
+            ]).toArray();
 
-        res.json(response);
+            res.json(response);
+        } else {
+            const response = await colection.find().toArray();
+
+            res.json(response);
+        }
     } catch (error) {
         res.status(400).json({ms : error.message});
     }
