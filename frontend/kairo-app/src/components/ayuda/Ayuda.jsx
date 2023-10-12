@@ -11,6 +11,7 @@ export default function Ayuda(){
           history.push('/login')
         }
     },[])
+    
     return (
         <div className="ayudabg mainpg">
             <Navbar/>
