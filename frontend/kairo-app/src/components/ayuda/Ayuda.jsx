@@ -2,10 +2,16 @@ import React from "react";
 import Accordion from "./Accordion";
 import Navbar from "../navbar";
 import '../../Main.css';
+import { useHistory } from "react-router-dom";
+import React,{useEffect} from "react";
 
 export default function Ayuda(){
-    
-
+    let history = useHistory
+    useEffect(() => {
+        if(!localStorage.getItem('token')){
+          history.push('/login')
+        }
+    },[])
     return (
         <div className="ayudabg mainpg">
             <Navbar/>

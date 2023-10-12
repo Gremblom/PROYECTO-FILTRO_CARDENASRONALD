@@ -7,16 +7,6 @@ import React, { useState } from 'react';
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 import axios from 'axios';
 import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-} from '@chakra-ui/react'
-import {
   Modal,
   ModalOverlay,
   ModalContent,
@@ -102,45 +92,43 @@ export default function List() {
           <button className='btnAddelement'>Añadir Elemento</button>
         </Link>
       </div>
-      <Modal isOpen={isOpen} size='6xl' onClose={onClose} >
+      <Modal isOpen={isOpen} size='6xl' onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Detalles</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          </ModalBody>
           {oneData.length > 0 && (
-            <TableContainer>
-            <Table variant='striped' colorScheme='teal' size='sm'>
-              <TableCaption>Imperial to metric conversion factors</TableCaption>
-              <Thead>
-                <Tr>
-                  <Th>Indicador</Th>
-                  <Th>Descripcion</Th>
-                  <Th>Categoria</Th>
-                  <Th>Fecha de Inicio</Th>
-                  <Th>Fecha de Terminación</Th>
-                  <Th>Formula</Th>
-                  <Th>Frecuencia</Th>
-                  <Th>Area</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                <Tr>
-                  <Td>{oneData[0].Indicador}</Td>
-                  <Td>{oneData[0].Descripcion}</Td>
-                  <Td>{oneData[0].Categoria}</Td>
-                  <Td>{oneData[0].FechaInicio}</Td>
-                  <Td>{oneData[0].FechaTerminacion}</Td>
-                  <Td>{oneData[0].Formula}</Td>
-                  <Td>{oneData[0].Frecuencia}</Td>
-                  <Td>{oneData[0].Area}</Td>
-
-                </Tr>
-              </Tbody>
-            </Table>
-          </TableContainer>
+            <table class="rounded-table">
+              <thead>
+                <tr>
+                  <th>Indicador</th>
+                  <th>Descripcion</th>
+                  <th>Categoria</th>
+                  <th>Fecha de Inicio</th>
+                  <th>Fecha de Terminacion</th>
+                  <th>Formula</th>
+                  <th>Frecuencia</th>
+                  <th>Cumplimiento</th>
+                  <th>Area</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{oneData[0].Indicador}</td>
+                  <td>{oneData[0].Descripcion}</td>
+                  <td>{oneData[0].Categoria}</td>
+                  <td>{oneData[0].FechaInicio}</td>
+                  <td>{oneData[0].FechaTerminacion}</td>
+                  <td>{oneData[0].Formula}</td>
+                  <td>{oneData[0].Frecuencia}</td>
+                  <td>{oneData[0].Cumplimiento}%</td>
+                  <td>{oneData[0].Area}</td>
+                </tr>
+              </tbody>
+            </table>
           )}
+          </ModalBody>
           <ModalFooter>
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
